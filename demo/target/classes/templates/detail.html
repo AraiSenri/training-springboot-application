@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"></meta>
+<body>
+	<center style="margin: 20px;">
+		<h2>ユーザ情報編集画面</h2>
+	</center>
+	<center>
+	<div class="container">
+	<form action="#" th:action="@{update}" th:object="${student}" method="post">
+		<input type="hidden" name="id" th:value="*{id}"/>
+	            <table>
+	                <tr>
+	                    <td>氏名:</td>
+	                    <td><input type="text" th:value="*{name}" 	th:field="*{name}" style="width:200px"/></td>
+	                    <span><td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td></span>
+	                </tr>
+	                <tr>
+	                    <td>メールアドレス:</td>
+	                    <td><input type="text" th:value="*{email}" th:field="*{email}" style="width:200px"/></td>
+	                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">email Error</td>
+	                </tr>
+	                
+					<tr>
+	                    <td>出身地:</td>
+	                    <td><input type="text" th:value="*{birthplace}"	th:field="*{birthplace}"	style="width:200px"/></td>
+	                    <td th:if="${#fields.hasErrors('birthplace')}" th:errors="*{birthplace}">Name Error</td>
+	                </tr>
+	                <tr>
+	                    <td>生年月日:</td>
+	                    <td><input type="text" th:value="*{dateOfBirth}" th:field="*{dateOfBirth}"		style="width:200px"/></td>
+	                    <td th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}">email Error</td>
+	                </tr>
+	                
+					<!--<tr>
+	                    <td>スキル・職歴:</td>
+	                    <td><input type="text" th:value="*{skill}" 	style="height: 200px; width: 400px;"/></td>
+	                    <td th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}">Name Error</td>
+	                </tr>-->
+					
+					
+					<td>スキル・職歴:</td>
+                    <td>		
+						<div>
+					    <div class="form-group col-8">
+							
+			    	  	<textarea class="form-control" th:text="*{skill}" th:field="*{skill}"  style="height: 200px; width: 400px;"></textarea>
+					    </div>	  												
+						</div>
+						
+						
+					</td>
+					<td th:if="${#fields.hasErrors('skill')}" th:errors="*{skill}">Name Error</td>
+					
+	               <!-- <tr>
+	                    <td>プロフィール:</td>
+	                    <td><input type="text" th:value="*{profile}"	style="height: 200px; width: 400px;"/></td>
+	                    <td th:if="${#fields.hasErrors('profile')}" th:errors="*{profile}">email Error</td>
+	                </tr>-->
+					
+	                <tr>
+						<tr>
+						    <td>プロフィール:</td>
+						    <td>						
+								<div>
+							    <div class="form-group col-8">
+			  			      	<textarea class="form-control" th:text="*{profile}"	th:field="*{profile}"  style="height: 200px; width: 400px;"></textarea>
+							    </div>	  
+								</div>
+							</td>
+						    <td th:if="${#fields.hasErrors('profile')}" th:errors="*{profile}">email Error</td>
+						</tr>
+						<tr>
+	                    <td>
+							<!--<input type="hidden"	th:value="${id}" name="id"/>-->
+							<button type="submit">Submit</button></td>
+	                </tr>
+					
+	            </table>
+	        </form>
+	</div>
+	</center>
+
+<!--  <div class="container">
+    <h1>新規登録画面ダミー</h1>
+    <a href="list">一覧に戻る</a>
+  </div>-->
+</body>
+</html>
