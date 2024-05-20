@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"></meta>
+<!-- <head th:replace="common/head :: head_fragment(title = 'ユーザー情報一覧', scripts = ~{::script}, links = ~{::link})"></head>-->
+<head>
+<!-- CSS読み込み -->
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+		
+<!-- <link rel="stylesheet" href="table.css"> -->
+<!-- JS読み込み -->
+<script th:src="@{/webjars/jquery/jquery.min.js}" defer></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}" defer></script>
+
+<style>
+	.design12 {
+	 width: 90%;
+	 text-align: center;
+	 border-collapse: collapse;
+	 border-spacing: 0;
+	 background: #cdf4f0;
+	}
+	.design12 tr:nth-child(2n+1) {
+	 background: #e9faf9;
+	}
+	.design12 th {
+	 padding: 10px;
+	 border: solid 1px #ffffff;
+	 background: #778ca3;
+	 color: #ffffff;
+	}
+	.design12 td {
+	 padding: 10px;
+	 border: solid 1px #ffffff;
+	}
+</style>
+</head>
+
+<body>
+	<center style="margin: 20px;">
+		<h2>ユーザ管理画面</h2>
+	</center>
+	<div class="continer" 	style="margin-left:30px">
+		<p></p>
+		<p style="margin-left:30px; padding-top:30px;">新規登録はこちらのボタンから</p>
+		<button id="add-botton" type="button" onclick="location.href='add'" style="margin-left: 20px;">　新規登録　</button>
+	</div>
+	
+	<div class="continer">
+
+	<center style="margin-top:50px">
+	<table border="1" class="design12" style="border-collapse: collapse">
+	    <thead>
+	    <tr>
+	        <th>ユーザID</th>
+	        <th>ユーザ名</th>
+	        <th>ユーザアドレス</th>
+			<th>生年月日</th>
+			<th>出身地</th>
+			<th>スキル</th>
+			<th>プロフィール</th>
+			<th style="width:70px"></th>
+			<th style="width:70px"></th>
+			<th style="width:100px"></th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    <tr th:each="user : ${student_list}" th:object="${user}" class="align-middle">
+	        <td th:text="${user.id}"></td>
+	        <td th:text="${user.name}"></td>
+	        <td th:text="${user.email}"></td>
+			<td th:text="${user.birthplace}"></td>
+	        <td th:text="${user.dateOfBirth}"></td>
+	        <td th:text="${user.skill}"></td>
+			<td th:text="${user.profile}"></td>
+			<!--<td><button type="button"　	id="datile-botton" onclick="location.href='put'" >詳細</button></td>-->
+			<td><form method="get" th:action="@{detail}"><input type="hidden"	th:value="${user.id}" name="id"/><button type="submit" id="datile-botton">詳細</button></form></td>
+			<!--<td><button type="button">削除</button></td>-->
+			<td></td>
+			<td>
+			<form method="POST" th:action="@{delete}">
+	           <input type="hidden" th:value="${user.id}" name="id">
+	           <button type="button" class="btn btn-danger" data-toggle="modal" th:data-target="'#id' + ${user.id}">削除</button>
+	           <!-- Modal -->
+	           <div class="modal fade" th:id="'id' + ${user.id}" tabindex="-1" aria-hidden="true">
+	             <div class="modal-dialog">
+	               <div class="modal-content">
+	                 <div class="modal-header">
+	                   <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+	                 </div>
+	                 <div class="modal-body">
+	                   削除してもよろしいですか？
+	                 </div>
+	                 <div class="modal-footer">
+	                   <button type="submit" class="btn btn-danger">削除</button>
+	                   <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+	                 </div>
+	               </div>
+	             </div>
+	            </div>
+	         </form>
+			</td>
+	    </tr>
+	    </tbody>
+	</table>
+	</center>
+
+	
+</body>
+</html>
