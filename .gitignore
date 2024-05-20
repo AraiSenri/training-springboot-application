@@ -2,8 +2,12 @@
 .DS_Store
 
 .mvn/*
-!mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.jar
 
+HELP.md
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### STS ###
 .apt_generated
@@ -21,14 +25,6 @@
 *.iml
 *.ipr
 /out/
-
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
 
 # IDE - VSCode
 .vscode/*
@@ -63,5 +59,16 @@ es_data
 /e2e/*.js
 /e2e/*.map
 
-# sourcemap
-*.js.map
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
