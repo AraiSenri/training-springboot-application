@@ -1,6 +1,9 @@
 #System Files
 .DS_Store
 
+.mvn/*
+!mvn/wrapper/maven-wrapper.jar
+
 
 ### STS ###
 .apt_generated
