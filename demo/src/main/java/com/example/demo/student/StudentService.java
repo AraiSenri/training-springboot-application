@@ -32,12 +32,22 @@ public class StudentService {
 		return studentRepository.findAll();
 	}
 	
+	/**
+	   * ユーザー情報 id検索
+	   * @return 検索結果
+	   */
+	
 	public Student getStudentById(Long studentId){
 		Student student = studentRepository.findById(studentId).orElseThrow(() -> new IllegalStateException(
 				"student is :" + studentId));
 		return student;
 	}
 
+	/**
+	   * ユーザー情報 id検索
+	   * @return 検索結果
+	   */
+	
 	public void addNewStudents(Student student) {
 		// TODO Auto-generated method stub
 		Optional<Student> studentOptional = studentRepository.findStudentByEmail(student.getEmail());
